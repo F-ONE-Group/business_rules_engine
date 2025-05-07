@@ -117,19 +117,24 @@ This will allow the engine to evaluate the rules against your variables.
 2. Process the rules to evaluate conditions and apply transformations.
 
 ```python
-from rules_engine.rules_engine import RuleEngine
+import os
+from rules_engine import RulesEngine
+
+# define the absolute path to the rules definition file
+rules_definition_path = os.path.join(os.getcwd(), "test_rule.yaml")
 
 # Initialize the engine
-engine = RuleEngine(process_variables={})
-
-# Load rules
-engine.load_rules("rules.yml")
+engine = RulesEngine(
+    process_variables={"string_variable": ""},
+    rules_definition_path=rules_definition_path,
+)
 
 # Process rules
 engine.process_rules()
 
 # Access the modified variables
 print("Processed Variables:", engine.process_variables)
+
 ```
 
 ## Contributing
