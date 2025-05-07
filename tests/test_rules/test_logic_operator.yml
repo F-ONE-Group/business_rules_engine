@@ -1,0 +1,53 @@
+rules:
+  and logic operator:
+    if:
+      and:
+        ${empty_str_variable}:
+          is_empty:
+            - true
+        ${float_variable}:
+          equal_to:
+            - 2
+            - 0.09
+            - datetime.datetime(2024, 3, 11)
+            - "test"
+      then:
+        ${result}:
+          append:
+            - "[OK] and logic operator"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] and logic operator"
+      ${test_status}:
+        set:
+          - false
+  or logic operator:
+    if:
+      or:
+        ${empty_str_variable}:
+          is_empty:
+            - false
+        ${datetime_variable}:
+          within:
+            - 2
+            - 0.09
+            - datetime.datetime(2024, 3, 11)
+            - "test"
+      then:
+        ${result}:
+          append:
+            - "[OK] or logic operator"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] or logic operator"
+      ${test_status}:
+        set:
+          - false

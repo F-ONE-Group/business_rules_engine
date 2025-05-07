@@ -1,0 +1,10 @@
+rules:
+  all variables:
+    if:
+      ${empty_str_variable}:
+        is_empty:
+          - true
+      then:
+        ${result}:
+          append:
+            - max(${float_variable}, ${int_variable})

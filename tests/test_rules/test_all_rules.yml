@@ -1,0 +1,943 @@
+rules:
+  test str is_empty true:
+    if:
+      ${empty_str_variable}:
+        is_empty:
+          - true
+      then:
+        ${result}:
+          append:
+            - "[OK] test str is_empty true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test str is_empty true"
+      ${test_status}:
+        set:
+          - false
+
+  test list is_empty true:
+    if:
+      ${empty_list_variable}:
+        is_empty:
+          - true
+      then:
+        ${result}:
+          append:
+            - "[OK] test list is_empty true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test list is_empty true"
+      ${test_status}:
+        set:
+          - false
+
+  test dict is_empty true:
+    if:
+      ${empty_dict_variable}:
+        is_empty:
+          - true
+      then:
+        ${result}:
+          append:
+            - "[OK] test dict is_empty true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test dict is_empty true"
+      ${test_status}:
+        set:
+          - false
+
+  test tuple is_empty true:
+    if:
+      ${empty_tuple_variable}:
+        is_empty:
+          - true
+      then:
+        ${result}:
+          append:
+            - "[OK] test tuple is_empty true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test tuple is_empty true"
+      ${test_status}:
+        set:
+          - false
+
+  test None is_empty true:
+    if:
+      ${none_variable}:
+        is_empty:
+          - true
+      then:
+        ${result}:
+          append:
+            - "[OK] test None is_empty true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test None is_empty true"
+      ${test_status}:
+        set:
+          - false
+
+  test str is_empty false:
+    if:
+      ${no_empty_str_variable}:
+        is_empty:
+          - false
+      then:
+        ${result}:
+          append:
+            - "[OK] test str is_empty false"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test str is_empty false"
+      ${test_status}:
+        set:
+          - false
+
+  test list is_empty false:
+    if:
+      ${no_empty_list_variable}:
+        is_empty:
+          - false
+      then:
+        ${result}:
+          append:
+            - "[OK] test list is_empty false"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test list is_empty false"
+      ${test_status}:
+        set:
+          - false
+
+  test dict is_empty false:
+    if:
+      ${no_empty_dict_variable}:
+        is_empty:
+          - false
+      then:
+        ${result}:
+          append:
+            - "[OK] test dict is_empty false"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test dict is_empty false"
+      ${test_status}:
+        set:
+          - false
+
+  test tuple is_empty false:
+    if:
+      ${no_empty_tuple_variable}:
+        is_empty:
+          - false
+      then:
+        ${result}:
+          append:
+            - "[OK] test tuple is_empty false"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test tuple is_empty false"
+      ${test_status}:
+        set:
+          - false
+
+  # less than equal
+  test less than float true:
+    if:
+      ${float_variable}:
+        less_than:
+          - 1.09
+      then:
+        ${result}:
+          append:
+            - "[OK] test less then float true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test less then float true"
+      ${test_status}:
+        set:
+          - false
+  test less than int true:
+    if:
+      ${int_variable}:
+        less_than:
+          - 10
+      then:
+        ${result}:
+          append:
+            - "[OK] test less than int true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test less than int true"
+      ${test_status}:
+        set:
+          - false
+
+  test less than datetime true:
+    if:
+      ${datetime_variable}:
+        less_than:
+          - datetime.datetime(2024,3,12)
+      then:
+        ${result}:
+          append:
+            - "[OK] test less than datetime true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test less than datetime true"
+      ${test_status}:
+        set:
+          - false
+
+  # less than equal
+  test less than equal float true:
+    if:
+      ${float_variable}:
+        less_than_or_equal_to:
+          - 0.09
+      then:
+        ${result}:
+          append:
+            - "[OK] test less than equal float true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test less than equal float true"
+      ${test_status}:
+        set:
+          - false
+  test less than equal int true:
+    if:
+      ${int_variable}:
+        less_than_or_equal_to:
+          - 2
+      then:
+        ${result}:
+          append:
+            - "[OK] test less than equal int true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test less than equal int true"
+      ${test_status}:
+        set:
+          - false
+
+  test less than equal datetime true:
+    if:
+      ${datetime_variable}:
+        less_than_or_equal_to:
+          - datetime.datetime(2024,3,11)
+      then:
+        ${result}:
+          append:
+            - "[OK] test less than equal datetime true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test less than equal datetime true"
+      ${test_status}:
+        set:
+          - false
+  # greater than
+  test greater than float true:
+    if:
+      ${float_variable}:
+        greater_than:
+          - 0.01
+      then:
+        ${result}:
+          append:
+            - "[OK] test greater than float true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test less then float true"
+      ${test_status}:
+        set:
+          - false
+  test greater than int true:
+    if:
+      ${int_variable}:
+        greater_than:
+          - 1
+      then:
+        ${result}:
+          append:
+            - "[OK] test greater than int true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test greater than int true"
+      ${test_status}:
+        set:
+          - false
+
+  test greater than datetime true:
+    if:
+      ${datetime_variable}:
+        greater_than:
+          - datetime.datetime(2024,3,10)
+      then:
+        ${result}:
+          append:
+            - "[OK] test greater than datetime true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test greater than datetime true"
+      ${test_status}:
+        set:
+          - false
+  # greater than equal
+  test greater than equal float true:
+    if:
+      ${float_variable}:
+        greater_than_or_equal_to:
+          - 0.09
+      then:
+        ${result}:
+          append:
+            - "[OK] test greater than equal float true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test greater than equal float true"
+      ${test_status}:
+        set:
+          - false
+  test greater than equal int true:
+    if:
+      ${int_variable}:
+        greater_than_or_equal_to:
+          - 2
+      then:
+        ${result}:
+          append:
+            - "[OK] test greater than equal int true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test greater than equal int true"
+      ${test_status}:
+        set:
+          - false
+
+  test greater than equal datetime true:
+    if:
+      ${datetime_variable}:
+        greater_than_or_equal_to:
+          - datetime.datetime(2024,3,11)
+      then:
+        ${result}:
+          append:
+            - "[OK] test greater than equal datetime true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test greater than equal datetime true"
+      ${test_status}:
+        set:
+          - false
+  # equal to
+  test equal to string true:
+    if:
+      ${no_empty_str_variable}:
+        equal_to:
+          - "test"
+      then:
+        ${result}:
+          append:
+            - "[OK] test equal to string true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test equal to string true"
+      ${test_status}:
+        set:
+          - false
+  test equal to string true 2:
+    if:
+      ${empty_str_variable}:
+        equal_to:
+          - ""
+      then:
+        ${result}:
+          append:
+            - "[OK] test equal to string true 2"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test equal to string true 2"
+      ${test_status}:
+        set:
+          - false
+  test equal float true:
+    if:
+      ${float_variable}:
+        equal_to:
+          - 0.09
+      then:
+        ${result}:
+          append:
+            - "[OK] test equal float true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test equal float true"
+      ${test_status}:
+        set:
+          - false
+  test equal int true:
+    if:
+      ${int_variable}:
+        equal_to:
+          - 2
+      then:
+        ${result}:
+          append:
+            - "[OK] test equal int true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test equal int true"
+      ${test_status}:
+        set:
+          - false
+
+  test equal datetime true:
+    if:
+      ${datetime_variable}:
+        equal_to:
+          - datetime.datetime(2024,3,11)
+      then:
+        ${result}:
+          append:
+            - "[OK] test equal datetime true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test equal datetime true"
+      ${test_status}:
+        set:
+          - false
+  # equal to
+  test not equal to string true:
+    if:
+      ${no_empty_str_variable}:
+        not_equal_to:
+          - ""
+      then:
+        ${result}:
+          append:
+            - "[OK] test not equal to string true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test not equal to string true"
+      ${test_status}:
+        set:
+          - false
+  test not equal to string true 2:
+    if:
+      ${empty_str_variable}:
+        not_equal_to:
+          - "test"
+      then:
+        ${result}:
+          append:
+            - "[OK] test not equal to string true 2"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test not equal to string true 2"
+      ${test_status}:
+        set:
+          - false
+  test not equal float true:
+    if:
+      ${float_variable}:
+        not_equal_to:
+          - 34.21
+      then:
+        ${result}:
+          append:
+            - "[OK] test not equal float true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test not equal float true"
+      ${test_status}:
+        set:
+          - false
+  test not equal int true:
+    if:
+      ${int_variable}:
+        not_equal_to:
+          - 102
+      then:
+        ${result}:
+          append:
+            - "[OK] test not equal int true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test not equal int true"
+      ${test_status}:
+        set:
+          - false
+
+  test not equal datetime true:
+    if:
+      ${datetime_variable}:
+        not_equal_to:
+          - datetime.datetime(2024,3,15)
+      then:
+        ${result}:
+          append:
+            - "[OK] test not equal datetime true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test not equal datetime true"
+      ${test_status}:
+        set:
+          - false
+
+  # starts with
+  test starts with one comparison var:
+    if:
+      ${no_empty_str_variable}:
+        starts_with:
+          - "te"
+      then:
+        ${result}:
+          append:
+            - "[OK] test starts with one comparison var"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test starts with one comparison var"
+      ${test_status}:
+        set:
+          - false
+  test starts with multiple comparison var:
+    if:
+      ${starts_with_str_variable}:
+        starts_with:
+          - "te"
+          - "872"
+          - "no"
+          - " "
+          - "87"
+      then:
+        ${result}:
+          append:
+            - "[OK] test starts with multiple comparison var"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test starts with multiple comparison var"
+      ${test_status}:
+        set:
+          - false
+  # starts with
+  test ends with one comparison var:
+    if:
+      ${no_empty_str_variable}:
+        ends_with:
+          - "st"
+      then:
+        ${result}:
+          append:
+            - "[OK] test ends with one comparison var"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test ends with one comparison var"
+      ${test_status}:
+        set:
+          - false
+  test ends with multiple comparison var:
+    if:
+      ${starts_with_str_variable}:
+        ends_with:
+          - "te"
+          - "872"
+          - "no"
+          - " "
+          - "87"
+          - "28"
+      then:
+        ${result}:
+          append:
+            - "[OK] test ends with multiple comparison var"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test ends with multiple comparison var"
+      ${test_status}:
+        set:
+          - false
+
+  # contains string
+  test contains string one value:
+    if:
+      ${no_empty_str_variable}:
+        contains_string: "es"
+      then:
+        ${result}:
+          append:
+            - "[OK] test contains string one value"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test contains string one value"
+      ${test_status}:
+        set:
+          - false
+  test contains string multiple value:
+    if:
+      ${no_empty_str_variable}:
+        contains_string:
+          - "te"
+          - "872"
+          - "no"
+          - "6 2"
+      then:
+        ${result}:
+          append:
+            - "[OK] test contains string multiple value"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test contains string multiple value"
+      ${test_status}:
+        set:
+          - false
+
+  # within
+  test within string:
+    if:
+      ${no_empty_str_variable}:
+        within:
+          - 2
+          - 0.09
+          - datetime.datetime(2024, 3, 11)
+          - "test"
+      then:
+        ${result}:
+          append:
+            - "[OK] test within string"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test within string"
+      ${test_status}:
+        set:
+          - false
+
+  test within float:
+    if:
+      ${float_variable}:
+        within:
+          - 2
+          - 0.09
+          - datetime.datetime(2024, 3, 11)
+          - "test"
+      then:
+        ${result}:
+          append:
+            - "[OK] test within float"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test within float"
+      ${test_status}:
+        set:
+          - false
+  test within int:
+    if:
+      ${int_variable}:
+        within:
+          - 2
+          - 0.09
+          - datetime.datetime(2024, 3, 11)
+          - "test"
+      then:
+        ${result}:
+          append:
+            - "[OK] test within int"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test within int"
+      ${test_status}:
+        set:
+          - false
+  test within datetime:
+    if:
+      ${datetime_variable}:
+        within:
+          - 2
+          - 0.09
+          - datetime.datetime(2024, 3, 11)
+          - "test"
+      then:
+        ${result}:
+          append:
+            - "[OK] test within datetime"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test within datetime"
+      ${test_status}:
+        set:
+          - false
+  # not in
+  test not_in string:
+    if:
+      ${no_empty_str_variable}:
+        not_in:
+          - 2
+          - 0.09
+          - datetime.datetime(2024, 3, 11)
+          - "23fdsdfds"
+      then:
+        ${result}:
+          append:
+            - "[OK] test not_in string"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test not_in string"
+      ${test_status}:
+        set:
+          - false
+
+  test not_in float:
+    if:
+      ${float_variable}:
+        not_in:
+          - 2
+          - 1.09
+          - datetime.datetime(2024, 3, 11)
+          - "test"
+      then:
+        ${result}:
+          append:
+            - "[OK] test not_in float"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test not_in float"
+      ${test_status}:
+        set:
+          - false
+  test not_in int:
+    if:
+      ${int_variable}:
+        not_in:
+          - 22
+          - 0.09
+          - datetime.datetime(2024, 3, 11)
+          - "test"
+      then:
+        ${result}:
+          append:
+            - "[OK] test not_in int"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test not_in int"
+      ${test_status}:
+        set:
+          - false
+  test not_in datetime:
+    if:
+      ${datetime_variable}:
+        not_in:
+          - 2
+          - 0.09
+          - datetime.datetime(2024, 1, 11)
+          - "test"
+      then:
+        ${result}:
+          append:
+            - "[OK] test not_in datetime"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test not_in datetime"
+      ${test_status}:
+        set:
+          - false
+
+  # match patter
+  test match pattern:
+    if:
+      ${starts_with_str_variable}:
+        matches_pattern: "\\d{4}"
+      then:
+        ${result}:
+          append:
+            - "[OK] test match pattern"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test match pattern"
+      ${test_status}:
+        set:
+          - false

@@ -1,0 +1,37 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="business-rules-engine",
+    version="0.1.0",
+    description="A business rules engine package.",
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
+    author="Your Name",
+    author_email="your.email@example.com",
+    url="https://github.com/yourusername/business-rules-engine",
+    packages=find_packages(),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    python_requires=">=3.10",
+    install_requires=[
+        "backoff==2.2.1",
+        "black==24.2.0",
+        "boto3==1.34.52",
+        "openpyxl==3.1.2",
+        "fastapi==0.110.0",
+        "pandas==1.5.3",
+        "numpy==1.26.4",
+        "pydantic>2.0.0",
+        "pyyaml==6.0.1",
+        "requests==2.31.0",
+        "uvicorn==0.27.1",
+        "xlsxwriter==3.2.0",
+        "python-multipart==0.0.9",
+        "google-auth",
+        "google-auth-oauthlib",
+        "google-api-python-client",
+    ],
+)

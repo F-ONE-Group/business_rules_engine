@@ -1,0 +1,32 @@
+external_data:
+  ext_data_1:
+    source: "excel"
+    file_name: "./tests/ext_data/test_1.xlsx"
+
+rules:
+  test ext_data_1:
+    if:
+      and:
+        ${empty_str_variable}:
+          within:
+            - ${ext_data_1.Name}
+        ${test_ext_float}:
+          greater_than:
+            - ${ext_data_1.MaxPayout}
+      then:
+        ${result}:
+          append:
+            - "[OK] test ext_data_1"
+        ${test_status}:
+          set:
+            - true
+        ${result_float}:
+          set:
+            - ${ext_data_1.MaxPayout}
+    else:
+      ${result}:
+        append:
+          - "[NOK] test ext_data_1"
+      ${test_status}:
+        set:
+          - false

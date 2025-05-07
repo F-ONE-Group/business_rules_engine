@@ -1,0 +1,10 @@
+rules:
+  make_new_fhs_format:
+    ${formatted_str_date}:
+      set:
+        - ${str_date}
+
+  reformat_fhs:
+    ${formatted_str_date}:
+      format:
+        - "%Y%m%d"

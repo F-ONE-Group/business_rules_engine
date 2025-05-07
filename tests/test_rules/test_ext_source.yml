@@ -1,0 +1,64 @@
+external_data:
+  ext_data_1:
+    source: "excel"
+    file_name: "./tests/ext_data/test_1.xlsx"
+  ext_data_2:
+    source: "excel"
+    file_name: "./tests/ext_data/test_2.xlsx"
+
+rules:
+  test ext_data_1:
+    if:
+      and:
+        ${no_empty_str_variable}:
+          within:
+            - ${ext_data_1.Name}
+        ${test_ext_float}:
+          greater_than:
+            - ${ext_data_1.MaxPayout}
+      then:
+        ${result}:
+          append:
+            - "[OK] test ext_data_1"
+        ${test_status}:
+          set:
+            - true
+        ${result_float}:
+          set:
+            - ${ext_data_1.MaxPayout}
+    else:
+      ${result}:
+        append:
+          - "[NOK] test ext_data_1"
+      ${test_status}:
+        set:
+          - false
+
+  test ext_data_2:
+    if:
+      or:
+        ${no_empty_str_variable}:
+          not_in:
+            - ${ext_data_2.Name}
+
+        ${ext_data_2.ContractEnd}:
+          less_than:
+            - ${datetime_variable}
+
+        ${ext_data_2.ContractStart}:
+          greater_than:
+            - ${datetime_variable}
+      then:
+        ${result}:
+          append:
+            - "[OK] test ext_data_2"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test ext_data_2"
+      ${test_status}:
+        set:
+          - false

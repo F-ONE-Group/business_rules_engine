@@ -1,0 +1,49 @@
+groups:
+  test_group:
+    - test str is_empty true
+  global:
+    - test str is_empty true
+
+rules:
+  test str is_empty true:
+    if:
+      ${empty_str_variable}:
+        is_empty:
+          - true
+      then:
+        ${result}:
+          append:
+            - "[OK] test str is_empty true"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test str is_empty true"
+      ${test_status}:
+        set:
+          - false
+
+  test within float:
+    if:
+      ${float_variable}:
+        within:
+          - 2
+          - 0.09
+          - datetime.datetime(2024, 3, 11)
+          - "test"
+      then:
+        ${result}:
+          append:
+            - "[OK] test within float"
+        ${test_status}:
+          set:
+            - true
+    else:
+      ${result}:
+        append:
+          - "[NOK] test within float"
+      ${test_status}:
+        set:
+          - false
