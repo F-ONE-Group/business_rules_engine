@@ -13,7 +13,7 @@ pip install business-rules-engine
 Or install directly from GitHub:
 
 ```bash
-pip install git+https://github.com/yourusername/business-rules-engine.git
+pip install git+https://github.com/F-ONE-Group/business-rules-engine.git
 ```
 
 ## Usage
