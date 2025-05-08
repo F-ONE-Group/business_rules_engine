@@ -171,6 +171,22 @@ class RulesEngine:
                 mutation_map[variable] = ([], "")
         return mutation_map
 
+    def _get_variables_and_mutation_maps(
+        self, data: Union[Dict, List[Dict]]
+    ) -> Tuple[List[str], Dict]:
+        variables: List[str] = []
+        if isinstance(data, dict):
+            variables = list(data.keys())
+        elif isinstance(data, list) and all(isinstance(d, dict) for d in data):
+            for d in data:
+                variables.extend(list(d.keys()))
+        else:
+            raise ValueError("The data input cannot be processed.")
+
+        mutations_map = self._get_variables_mutations_map(variables)
+
+        return variables, mutations_map
+
     def _parse_rules(self):
         for rule_name, rule_def in self.rules_definition.rules.items():
             group_name: str = None
@@ -201,15 +217,16 @@ class RulesEngine:
                     # we will have only one key and that key is the logical_operator
                     logical_operator = list(rule_comparisons.keys())[0]
                     rule_comparisons = rule_comparisons[logical_operator]
-                assert isinstance(rule_comparisons, dict)
 
-                # Check for rules mutations
-                comp_variables = rule_comparisons.keys()
-                trans_variables = rule_transformations.keys()
-                else_variables = else_transformations.keys()
-                comp_mutations_map = self._get_variables_mutations_map(comp_variables)
-                trans_mutations_map = self._get_variables_mutations_map(trans_variables)
-                else_mutations_map = self._get_variables_mutations_map(else_variables)
+                comp_variables, comp_mutations_map = (
+                    self._get_variables_and_mutation_maps(rule_comparisons)
+                )
+                trans_variables, trans_mutations_map = (
+                    self._get_variables_and_mutation_maps(rule_transformations)
+                )
+                else_variables, else_mutations_map = (
+                    self._get_variables_and_mutation_maps(else_transformations)
+                )
 
                 # compute permutations from the comparison mutations
                 # each permutation should correspond to a rule
@@ -226,14 +243,26 @@ class RulesEngine:
                         logger.info(
                             f"Addition condition for {variable} -> {mutation if mutation else variable}"
                         )
-                        comparison = self._parse_comparison(
-                            {variable: rule_comparisons[variable]},
-                            mutation,
-                            mutation_key,
-                        )
-                        condition.comparisons.append(comparison)
-                        if mutation_key:
-                            mutations_applied.append(mutation)
+                        if isinstance(rule_comparisons, list):
+                            for rule in rule_comparisons:
+                                if variable in rule.keys():
+                                    comparison = self._parse_comparison(
+                                        {variable: rule[variable]},
+                                        mutation,
+                                        mutation_key,
+                                    )
+                                    condition.comparisons.append(comparison)
+                                    if mutation_key:
+                                        mutations_applied.append(mutation)
+                        else:
+                            comparison = self._parse_comparison(
+                                {variable: rule_comparisons[variable]},
+                                mutation,
+                                mutation_key,
+                            )
+                            condition.comparisons.append(comparison)
+                            if mutation_key:
+                                mutations_applied.append(mutation)
                     for k, v in rule_transformations.items():
                         trans_variables_mutation, trans_mutation_key = (
                             trans_mutations_map[k]
