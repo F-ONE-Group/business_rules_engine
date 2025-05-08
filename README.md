@@ -21,15 +21,15 @@ pip install git+https://github.com/F-ONE-Group/business_rules_engine.git
 ### Importing the RuleEngine
 
 ```python
-from rules_engine.rules_engine import RuleEngine
+from rules_engine.rules_engine import RulesEngine
 ```
 
 ### Initializing the RuleEngine
 
-Create an instance of the `RuleEngine` class:
+Create an instance of the `RulesEngine` class:
 
 ```python
-engine = RuleEngine()
+engine = RulesEngine()
 ```
 
 ### Public Methods
