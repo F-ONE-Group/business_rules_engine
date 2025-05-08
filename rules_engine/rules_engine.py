@@ -267,7 +267,7 @@ class RulesEngine:
                         trans_variables_mutation, trans_mutation_key = (
                             trans_mutations_map[k]
                         )
-                        if mutations_applied:
+                        if mutations_applied and trans_variables_mutation:
                             trans_variables_mutation_ = []
                             for mutation in mutations_applied:
                                 for x in trans_variables_mutation:
@@ -327,7 +327,7 @@ class RulesEngine:
                             else_variables_mutation, else_mutation_key = (
                                 else_mutations_map[k]
                             )
-                            if mutations_applied:
+                            if mutations_applied and else_variables_mutation:
                                 else_variables_mutation_ = []
                                 for mutation in mutations_applied:
                                     for x in else_variables_mutation:
